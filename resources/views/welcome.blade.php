@@ -12,6 +12,8 @@
         <!-- Styles -->
         <style>
             html, body {
+                background-image: url("{{ asset('images/main.jpg') }}");
+                background-size: 100%;
                 background-color: #fff;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
@@ -68,33 +70,55 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        @if(Auth::user()->isDisabled())
+                            <strong>
+                                <a href="{{ url('/') }}" style="color: #95c5ed; text-decoration: none">{{__('Main')}}</a>
+                            </strong>
+                        @elseif(Auth::user()->isUser())
+                            <strong>
+                                <a href="{{ url('/user/index') }}" style="color: #95c5ed; text-decoration: none">{{__('Account') }}</a>
+                            </strong>
+                            <strong>
+                                <a href="{{ url('/') }}" style="color: #95c5ed; text-decoration: none">{{__('Main')}}</a>
+                            </strong>
+                        @elseif(Auth::user()->isVisitor())
+                            <strong>
+                                <a href="{{ url('/') }}" style="color: #95c5ed; text-decoration: none">{{__('Main')}}</a>
+                            </strong>
+                        @elseif(Auth::user()->isAdministrator())
+                            <strong>
+                                <a href="{{ url('/admin/index') }}" style="color: #95c5ed; text-decoration: none; cursor: pointer">{{__('Admin Panel')}}</a>
+                            </strong>
+                            <strong>
+                                <a href="{{ url('/') }}" style="color: #95c5ed; text-decoration: none">{{__('Main')}}</a>
+                            </strong>
+                        @endif
+
+                        <strong>
+                            <a href="{{ url('/') }}"
+                               class="dropdown-item"
+                               style="color: #95c5ed; text-decoration: none"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                {{__('Log out')}}
+                            </a>
+                        </strong>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none">
+                                @csrf
+                            </form>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <strong>
+                            <a href="{{ route('login') }}" style="color: #95c5ed; text-decoration: none">{{__('Login')}}</a>
+                        </strong>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <strong>
+                                <a href="{{ route('register') }}" style="color: #95c5ed; text-decoration: none">Register</a>
+                            </strong>
                         @endif
                     @endauth
                 </div>
             @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
         </div>
     </body>
 </html>
