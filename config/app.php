@@ -233,6 +233,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        /*
+         * Custom Aliases...
+         */
+        'MetaTag' => \Fomvasss\LaravelMetaTags\Facade::class,
     ],
 
 ];
