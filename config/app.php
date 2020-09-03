@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -180,6 +180,7 @@ return [
          */
 
         \Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Lavary\Menu\ServiceProvider::class,
 
     ],
 
@@ -237,6 +238,7 @@ return [
          * Custom Aliases...
          */
         'MetaTag' => \Fomvasss\LaravelMetaTags\Facade::class,
+        'Menu' => Lavary\Menu\Facade::class,
     ],
 
 ];

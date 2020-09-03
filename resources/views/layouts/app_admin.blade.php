@@ -20,7 +20,7 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset('adminlte/dist/css/skins/_all-skins.min.css')}}">
 
-    {{--<link rel="stylesheet" href="{{asset('css/my.css')}}">--}}
+    <link rel="stylesheet" href="{{asset('css/my.css')}}">
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -122,8 +122,8 @@
               </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="">Список категорий</a></li>
-                        <li><a href="">Добавить категорию</a></li>
+                        <li><a href="{{route('blog.admin.categories.index')}}">Список категорий</a></li>
+                        <li><a href="{{route('blog.admin.categories.create')}}">Добавить категорию</a></li>
                     </ul>
                 </li>
                 <li class="treeview">

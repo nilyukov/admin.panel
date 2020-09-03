@@ -23,6 +23,11 @@ abstract class CoreRepository
         return $this->startConditions()->find($id);
     }
 
+    public function getEditId($id)
+    {
+        return $this->startConditions()->find($id);
+    }
+
     public function getRequestId($get = true, $id = 'id')
     {
         if ($get) {

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Admin\Category;
+use App\Observers\AdminCategoryObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \Schema::defaultStringLength(191);
+        date_default_timezone_set('Europe/Minsk');
+        Category::observe(AdminCategoryObserver::class);
     }
 }
