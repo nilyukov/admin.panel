@@ -26,7 +26,6 @@ class OrderController extends AdminBaseController
      */
     public function index()
     {
-        $perpage     = 5;
         $countOrders = MainRepository::getCountOrders();
         $paginator   = $this->orderRepository->getAllOrders(10);
         MetaTag::setTags([
