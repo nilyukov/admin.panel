@@ -69,7 +69,7 @@ class CategoryController extends AdminBaseController
     public function create()
     {
         $item         = new Category();
-        $categoryList = $this->categoryRepository->getCombosCategories();
+        $categoryList = $this->categoryRepository->getComboBoxCategories();
 
         MetaTag::setTags(['title' => 'Category create']);
         return view('blog.admin.category.create', [
